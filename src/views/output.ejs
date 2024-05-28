@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Kết quả từ CSDL</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    table, th, td {
+      border: 1px solid black;
+    }
+    th, td {
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+  <h1>Dữ liệu từ Cơ sở dữ liệu</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Tên</th>
+        <th>Địa chỉ MAC</th>
+        <th>Time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% data.forEach(item => { %>
+        <tr>
+          <td><%= item.Ten %></td>
+          <td><%= item.Mac %></td>
+          <td><%= item.Time %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</body>
+</html>
