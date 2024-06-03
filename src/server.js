@@ -17,8 +17,8 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-
-
+// const DB_PATH = path.join(__dirname, '/dulieudiemdanh.db');
+const DB_PATH = 'C:/sqlite/db/dulieudiemdanh.db'
 
 app.post('/register', (req, res) => {
   let name = req.body.name;
@@ -28,7 +28,7 @@ app.post('/register', (req, res) => {
 
   console.log(name, mac_address);
   res.send("Đăng ký thành công!");
-  let db = new sqlite3.Database('C:/sqlite/db/dulieudiemdanh.db', sqlite3.OPEN_READWRITE, (err) => {
+  let db = new sqlite3.Database(DB_PATH, sqlite3.OPEN_READWRITE, (err) => {
     if (err) {
       console.error(err.message);
     }
@@ -53,7 +53,7 @@ app.get('/dangki', function (req, res) {
 });
 
 app.get('/danhsach', (req, res) => {
-  let db = new sqlite3.Database('C:/sqlite/db/dulieudiemdanh.db', sqlite3.OPEN_READWRITE, (err) => {
+  let db = new sqlite3.Database(DB_PATH, sqlite3.OPEN_READWRITE, (err) => {
     if (err) {
       console.error(err.message);
     }
@@ -81,7 +81,7 @@ app.get('/danhsach', (req, res) => {
 
 
 app.get('/danhsachdiemdanh', (req, res) => {
-  let db = new sqlite3.Database('C:/sqlite/db/dulieudiemdanh.db', sqlite3.OPEN_READWRITE, (err) => {
+  let db = new sqlite3.Database(DB_PATH, sqlite3.OPEN_READWRITE, (err) => {
     if (err) {
       console.error(err.message);
     }
@@ -127,7 +127,7 @@ function getTime() {
 }
 
 function checkMac(mac, callback) {
-  let db = new sqlite3.Database('C:/sqlite/db/dulieudiemdanh.db', sqlite3.OPEN_READWRITE, (err) => {
+  let db = new sqlite3.Database(DB_PATH, sqlite3.OPEN_READWRITE, (err) => {
     if (err) {
       console.error(err.message);
     }
@@ -164,7 +164,7 @@ app.post('/:mac', function (req ,res) {
   res.send(`MAC Address Received: ${macAddress}`);
 
   const Time = getTime();
-  let db = new sqlite3.Database('C:/sqlite/db/dulieudiemdanh.db', sqlite3.OPEN_READWRITE, (err) => {
+  let db = new sqlite3.Database(DB_PATH, sqlite3.OPEN_READWRITE, (err) => {
     if (err) {
       console.error(err.message);
     }
@@ -209,6 +209,6 @@ app.post('/:mac', function (req ,res) {
 
 
 
-app.listen(port, host, () => {
+app.listen(port,  () => {
   console.log(`App listening on IP ${host} and port ${port}`);
 });
