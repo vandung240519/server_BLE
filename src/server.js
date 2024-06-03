@@ -17,8 +17,8 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-const DB_PATH = path.join(__dirname, '/dulieudiemdanh.db');
-// const DB_PATH = 'C:/sqlite/db/dulieudiemdanh.db'
+// const DB_PATH = path.join(__dirname, '/dulieudiemdanh.db');
+const DB_PATH = 'C:/sqlite/db/dulieudiemdanh.db'
 
 app.post('/register', (req, res) => {
   let name = req.body.name;
